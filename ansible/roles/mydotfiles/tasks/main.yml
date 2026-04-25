@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/mydotfiles
+
+# --- Clone mydotfiles repo ---
+- name: Check if mydotfiles repo already exists
+  ansible.builtin.stat:
+    path: "{{ mydotfiles_repo_dest }}"
+  register: mydotfiles_cloned
+
+- name: Clone mydotfiles repo (with submodules for oh-my-zsh plugins)
+  ansible.builtin.git:
+    repo: "{{ mydotfiles_repo }}"
+    dest: "{{ mydotfiles_repo_dest }}"
+    version: main
+    update: true                  # pulls latest if already cloned
+    recursive: true               # init/update submodules (oh-my-zsh plugins)
+  become: true
+  become_user: "{{ mydotfiles_user }}"
+
+# --- Ensure .config dir exists ---
+- name: Ensure .config directory exists
+  ansible.builtin.file:
+    path: "{{ mydotfiles_user_home }}/.config"
+    state: directory
+    owner: "{{ mydotfiles_user }}"
+    mode: '0755'
+  become: true
+
+# --- Create symlinks ---
+- name: Create symlinks for mydotfiles
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link                  # creates a symlink
+    owner: "{{ mydotfiles_user }}"
+    force: true                   # overwrite if something already exists there
+  become: true
+  become_user: "{{ mydotfiles_user }}"
+  loop: "{{ mydotfiles_links }}"   # iterates over the list in defaults

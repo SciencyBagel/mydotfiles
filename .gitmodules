@@ -1,0 +1,12 @@
+[submodule "home/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = home/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = home/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "home/.oh-my-zsh/custom/plugins/fast-syntax-highlighting"]
+	path = home/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
+[submodule "home/.oh-my-zsh/custom/plugins/zsh-autocomplete"]
+	path = home/.oh-my-zsh/custom/plugins/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete

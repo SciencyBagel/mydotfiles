@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT-0
+---
+# defaults file for roles/common
+
+common_packages:
+  - curl
+  - git
+
+common_timezone: "America/Chicago"
