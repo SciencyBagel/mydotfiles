@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT-0
+---
+
+# defaults file for roles/zsh
+
+# The user to install oh-my-zsh for.
+zsh_user: jahir
+
+# Resolved home directory for the user. Uses the Ansible-discovered
+# value so the same default works on Linux (/home/...) and macOS (/Users/...).
+zsh_home: "{{ ansible_user_dir }}"
+
+# oh-my-zsh install path.
+zsh_omz_dir: "{{ zsh_home }}/.oh-my-zsh"

@@ -1,0 +1,17 @@
+- name: Apply common baseline to all Pis
+  hosts: raspberrypis
+  become: true
+  roles:
+    - common
+    - zsh
+    - neovim
+    - mydotfiles
+
+- name: Apply common baseline to all stations
+  hosts: stations
+  become: true
+  roles:
+    - common
+    - zsh
+    - neovim
+    - mydotfiles

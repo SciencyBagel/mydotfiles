@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/neovim
+# --- Dependencies lazyvim needs ---
+- name: Install neovim dependencies
+  ansible.builtin.package:
+    name:
+      - neovim
+      - git
+      - curl
+      - ripgrep       # lazyvim uses this for search
+      - fd-find       # lazyvim uses this for file finding
+      - unzip
+    state: present
+
+# --- Bootstrap lazyvim config ---
+- name: Ensure nvim config directory exists
+  ansible.builtin.file:
+    path: "{{ neovim_config_dir }}"
+    state: directory
+    owner: "{{ neovim_user }}"
+    mode: '0755'

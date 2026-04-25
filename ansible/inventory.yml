@@ -1,0 +1,7 @@
+raspberrypis:
+  hosts:
+    pi-5:
+
+stations:
+  hosts:
+    ms-7d32:

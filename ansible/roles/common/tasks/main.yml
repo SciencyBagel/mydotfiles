@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/common
+
+# Baseline configuration applied to every Raspberry Pi
+
+# --- System Updates ---
+- name: Update apt package cache
+  ansible.builtin.package:
+    update_cache: true
+    cache_valid_time: 3600       # Only update if cache is older than 1 hour
+
+- name: Upgrade all packages to latest
+  ansible.builtin.package:
+    upgrade: dist                # Full dist-upgrade
+
+# --- Common Packages ---
+- name: Install baseline packages
+  ansible.builtin.package:
+    name: "{{ common_packages }}"  # References a variable (defined in defaults)
+    state: present
+
+# --- Timezone ---
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ common_timezone }}"  # References a variable
+
+# # --- Hostname ---
+# - name: Set hostname
+#   ansible.builtin.hostname:
+#     name: "{{ inventory_hostname }}"  # Built-in Ansible var — uses your inventory alias (pi1, pi2, etc.)

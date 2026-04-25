@@ -1,0 +1,13 @@
+# playbooks/bootstrap.yml
+---
+- name: Bootstrap passwordless sudo
+  hosts: raspberrypis
+  become: true
+  tasks:
+    - name: Configure passwordless sudo for jahir user
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/jahir
+        line: "jahir ALL=(ALL) NOPASSWD: ALL"
+        create: true
+        mode: '0440'
+        validate: 'visudo -cf %s'    # validates syntax before saving — important!
