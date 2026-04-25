@@ -7,7 +7,7 @@
 #   3. Symlinks ~/.zshrc, ~/.oh-my-zsh/custom, ~/.config/nvim into this repo.
 #
 # Idempotent — safe to re-run. Pass --force to overwrite existing non-symlink files.
-
+# TODO: consider making this into an ansible task/role
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
