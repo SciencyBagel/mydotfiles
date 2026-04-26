@@ -2,12 +2,6 @@
 ---
 # tasks file for roles/zsh
 
-# --- Install zsh ---
-- name: Install zsh
-  ansible.builtin.package:
-    name: zsh
-    state: present
-
 # --- Install oh-my-zsh ---
 - name: Check if oh-my-zsh is already installed
   ansible.builtin.stat:
@@ -17,21 +11,19 @@
 - name: Download oh-my-zsh installer
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/omz_install.sh
+    dest: "{{ zsh_home }}/omz_install.sh"
     mode: '0755'
   when: not zsh_omz_installed.stat.exists   # skip if already installed
+  # changed_when: not zsh_omz_installed.stat.exists
 
-  changed_when: not zsh_omz_installed.stat.exists
 - name: Run oh-my-zsh installer
   ansible.builtin.command:
-    cmd: sh /tmp/omz_install.sh --unattended
-  become: true
-  become_user: "{{ zsh_user }}"
+    cmd: sh "{{ zsh_home }}/omz_install.sh" --unattended
   when: not zsh_omz_installed.stat.exists
-  changed_when: not zsh_omz_installed.stat.exists  # only "changed" if we actually ran it
+  args:
+    creates: "{{ zsh_omz_dir }}"
 
-# --- Set zsh as default shell ---
-- name: Set zsh as default shell for user
-  ansible.builtin.user:
-    name: "{{ zsh_user }}"
-    shell: /bin/zsh
+- name: Remove oh-my-zsh custom folder
+  ansible.builtin.file:
+    path: "{{ zsh_omz_dir }}/custom"
+    state: absent

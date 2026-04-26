@@ -21,9 +21,15 @@
     state: present
 
 # --- Timezone ---
-- name: Set timezone
-  community.general.timezone:
-    name: "{{ common_timezone }}"  # References a variable
+# - name: Set timezone
+#   community.general.timezone:
+#     name: "{{ common_timezone }}"  # References a variable
+#
+# --- Set zsh as default shell ---
+- name: Set zsh as default shell for user
+  ansible.builtin.user:
+    name: "{{ common_user }}"
+    shell: /bin/zsh
 
 # # --- Hostname ---
 # - name: Set hostname

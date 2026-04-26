@@ -12,6 +12,7 @@
       - fd-find       # lazyvim uses this for file finding
       - unzip
     state: present
+  become: true
 
 # --- Bootstrap lazyvim config ---
 - name: Ensure nvim config directory exists

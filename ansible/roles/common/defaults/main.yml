@@ -2,8 +2,11 @@
 ---
 # defaults file for roles/common
 
+common_user: jahir
+
 common_packages:
   - curl
   - git
+  - zsh
 
 common_timezone: "America/Chicago"
