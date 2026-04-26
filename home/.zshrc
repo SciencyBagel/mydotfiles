@@ -4,7 +4,7 @@
 if [[ -z "$HOMEBREW_PREFIX" ]]; then
   if [[ "$OSTYPE" == darwin* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-  else:
+  else
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
   fi
 fi
