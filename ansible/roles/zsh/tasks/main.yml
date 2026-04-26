@@ -22,8 +22,5 @@
   when: not zsh_omz_installed.stat.exists
   args:
     creates: "{{ zsh_omz_dir }}"
-
-- name: Remove oh-my-zsh custom folder
-  ansible.builtin.file:
-    path: "{{ zsh_omz_dir }}/custom"
-    state: absent
+  notify:
+    - Remove oh-my-zsh custom folder

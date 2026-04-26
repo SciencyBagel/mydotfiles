@@ -1,3 +1,8 @@
 # SPDX-License-Identifier: MIT-0
 ---
 # handlers file for roles/zsh
+
+- name: Remove oh-my-zsh custom folder
+  ansible.builtin.file:
+    path: "{{ zsh_omz_dir }}/custom"
+    state: absent
