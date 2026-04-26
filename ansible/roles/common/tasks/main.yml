@@ -31,6 +31,26 @@
     name: "{{ common_user }}"
     shell: /bin/zsh
 
+- name: Check if Homebrew is installed
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  with_items:
+    - /opt/homebrew/bin/brew
+    - /usr/local/bin/brew
+    - /home/linuxbrew/.linuxbrew/bin/brew
+  register: common_brew_check
+
+- name: Set fact if Homebrew exists
+  ansible.builtin.set_fact:
+    common_brew_installed: "{{ common_brew_check.results | map(attribute='stat.exists') | list is any }}"
+
+- name: Install Homebrew
+  become: true
+  become_user: "{{ common_user }}"
+  ansible.builtin.shell:
+    cmd: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: not common_brew_installed
+  changed_when: true
 # # --- Hostname ---
 # - name: Set hostname
 #   ansible.builtin.hostname:

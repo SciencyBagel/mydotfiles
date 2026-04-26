@@ -8,5 +8,6 @@ common_packages:
   - curl
   - git
   - zsh
+  - build-essential
 
 common_timezone: "America/Chicago"
