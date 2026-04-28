@@ -8,17 +8,3 @@ mydotfiles_user_home: "{{ ansible_user_dir }}"
 mydotfiles_repo: "git@github.com:SciencyBagel/mydotfiles.git"
 mydotfiles_repo_dest: "{{ mydotfiles_user_home }}/mydotfiles"
 mydotfiles_repo_home: "{{ mydotfiles_repo_dest }}/home"
-
-# TODO: revisit symlink strategy. Current approach is one explicit (src, dest) pair
-# per top-level dotfile. Alternatives to consider: walk the `home/` tree and link
-# each file individually (avoids clobbering installer-created dirs), or use GNU
-# stow (declarative, but adds a dependency). Whole-dir symlinks like the ones below
-# work today but require `force: true` to overwrite directories created by other
-# roles (e.g. ~/.oh-my-zsh/custom is created by the oh-my-zsh installer).
-mydotfiles_links:
-  - src: "{{ mydotfiles_repo_home }}/.zshrc"
-    dest: "{{ mydotfiles_user_home }}/.zshrc"
-  - src: "{{ mydotfiles_repo_home }}/.oh-my-zsh/custom"
-    dest: "{{ mydotfiles_user_home }}/.oh-my-zsh/custom"
-  - src: "{{ mydotfiles_repo_home }}/.config/nvim"
-    dest: "{{ mydotfiles_user_home }}/.config/nvim"

@@ -20,23 +20,10 @@
   become: true
   become_user: "{{ mydotfiles_user }}"
 
-# --- Ensure .config dir exists ---
-- name: Ensure .config directory exists
-  ansible.builtin.file:
-    path: "{{ mydotfiles_user_home }}/.config"
-    state: directory
-    owner: "{{ mydotfiles_user }}"
-    mode: '0755'
-  become: true
-
-# --- Create symlinks ---
-- name: Create symlinks for mydotfiles
-  ansible.builtin.file:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link                  # creates a symlink
-    owner: "{{ mydotfiles_user }}"
-    force: true                   # overwrite if something already exists there
+# --- Stow dotfiles into $HOME ---
+- name: Stow dotfiles into home directory
+  ansible.builtin.command:
+    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ mydotfiles_user_home }} home
   become: true
   become_user: "{{ mydotfiles_user }}"
-  loop: "{{ mydotfiles_links }}"   # iterates over the list in defaults
+  changed_when: false

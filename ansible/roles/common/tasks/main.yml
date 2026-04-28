@@ -52,6 +52,7 @@
       - fd
       - podman
       - pipx
+      - stow
     state: present
 
 # # --- Hostname ---
