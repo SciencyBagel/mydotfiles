@@ -1,2 +1,5 @@
+---
+tags: [ ansible ]
+---
 # filter by hosts
-ansible-playbook playbooks/site.yml --limit <host-group>
+ansible-playbook playbooks/site.yml -l <host-or-group>

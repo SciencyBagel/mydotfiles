@@ -1,9 +1,8 @@
 ---
-tags: [ orchestration ]
+tags: [ orchestration, ansible ]
 ---
-# To run a command on multiple instances at once - using `servers` group from `inventory.yml`:
-ansible -u ansible -i inventory.yml servers -m shell -a "ls /var"
-
 # run a role
 ansible <host_pattern> -m include_role -a "name=<role_name>"
 
+# see the value of a fact for a host_pattern
+ansible <host_pattern> -i <inventory_path> -m setup -a "filter=<fact_name>"
