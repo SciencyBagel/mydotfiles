@@ -18,6 +18,7 @@
       - fd       # lazyvim uses this for file finding
       - unzip
       - tree-sitter-cli
+      - font-caskaydia-mono-nerd-font
     state: present
   # become: true
   # become_user: "{{ lazyvim_user }}"

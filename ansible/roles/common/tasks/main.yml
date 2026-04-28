@@ -62,7 +62,6 @@
       - fd
       - podman
       - pipx
-      - font-caskaydia-mono-nerd-font
     state: present
 # # --- Hostname ---
 # - name: Set hostname
