@@ -1,0 +1,2 @@
+# filter by hosts
+ansible-playbook playbooks/site.yml --limit <host-group>
