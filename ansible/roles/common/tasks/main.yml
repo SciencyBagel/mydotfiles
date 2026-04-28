@@ -50,4 +50,5 @@
       - tmux
       - podman
       - pipx
+      - bat
     state: present

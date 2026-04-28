@@ -98,6 +98,9 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlightin
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
+# Use bat to render man pages with syntax highlighting
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
