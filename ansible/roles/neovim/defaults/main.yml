@@ -1,7 +1,0 @@
-# SPDX-License-Identifier: MIT-0
----
-# defaults file for roles/neovim
-neovim_user: jahir
-neovim_home: "/home/{{ neovim_user }}"
-neovim_config_dir: "{{ neovim_home }}/.config/nvim"
-neovim_lazyvim_repo: "https://github.com/LazyVim/starter"

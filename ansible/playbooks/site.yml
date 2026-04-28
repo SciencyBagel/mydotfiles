@@ -12,7 +12,7 @@
     - stations
   roles:
     - omz
-    - neovim
+    - lazyvim
     - mydotfiles
   tags:
     - configs
