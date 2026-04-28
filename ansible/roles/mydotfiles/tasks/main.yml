@@ -8,6 +8,7 @@
     path: "{{ mydotfiles_repo_dest }}"
   register: mydotfiles_cloned
 
+  # WARN: should be read only
 - name: Clone mydotfiles repo (with submodules for oh-my-zsh plugins)
   ansible.builtin.git:
     repo: "{{ mydotfiles_repo }}"
