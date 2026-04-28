@@ -2,6 +2,9 @@
 ---
 mydotfiles_user: jahir
 
+# Uses Ansible-discovered home dir so Linux (/home/...) and macOS (/Users/...) both work.
+mydotfiles_user_home: "{{ ansible_user_dir }}"
+
 mydotfiles_repo: "git@github.com:SciencyBagel/mydotfiles.git"
-mydotfiles_repo_dest: "{{ ansible_user_dir }}/mydotfiles"
+mydotfiles_repo_dest: "{{ mydotfiles_user_home }}/mydotfiles"
 mydotfiles_repo_home: "{{ mydotfiles_repo_dest }}/home"

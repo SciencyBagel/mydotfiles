@@ -20,10 +20,30 @@
   become: true
   become_user: "{{ mydotfiles_user }}"
 
-# --- Stow dotfiles into $HOME ---
-- name: Stow dotfiles into home directory
+# Adopt any conflicting files into the repo so stow can proceed,
+# then immediately restore the repo to discard them.
+# This is the standard pattern for resolving pre-existing file conflicts with stow.
+- name: Stow dotfiles, adopting any conflicting files
   become: true
   become_user: "{{ mydotfiles_user }}"
   ansible.builtin.command:
-    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ ansible_user_dir }} home
+    cmd: >
+      stow --adopt --restow
+      --dir {{ mydotfiles_repo_dest }}
+      --target {{ mydotfiles_user_home }}
+      home
+  # stow exits 0 whether or not it made changes, so we check its output
+  # for lines that indicate a symlink was created or modified
+  register: mydotfiles_stow_result
+  changed_when: "'LINK' in mydotfiles_stow_result.stderr or 'UNLINK' in mydotfiles_stow_result.stderr"
+
+# After --adopt, any foreign files that were pulled into the repo are now
+# tracked as modifications. git restore discards them, leaving only symlinks.
+- name: Restore rep to discard any adopted (foreign) files
+  become: true
+  become_user: "{{ mydotfiles_user }}"
+  ansible.builtin.command:
+    cmd: git restore .
+    chdir: "{{ mydotfiles_repo_dest }}"
+  # Only meaningful after an adopt. Could also run unconditionally as a safety net.
   changed_when: false

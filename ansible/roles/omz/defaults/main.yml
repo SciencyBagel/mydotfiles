@@ -4,7 +4,7 @@
 # defaults file for roles/zsh
 
 # The user to install oh-my-zsh for.
-omz_usej: jahir
+omz_user: jahir
 
 # Resolved home directory for the user. Uses the Ansible-discovered
 # value so the same default works on Linux (/home/...) and macOS (/Users/...).
