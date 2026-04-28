@@ -5,27 +5,27 @@
 # --- Install oh-my-zsh ---
 - name: Check if oh-my-zsh is already installed
   ansible.builtin.stat:
-    path: "{{ zsh_omz_dir }}"
+    path: "{{ omz_dir }}"
   register: zsh_omz_installed
 
 - name: Download oh-my-zsh installer
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: "{{ zsh_home }}/omz_install.sh"
+    dest: "{{ omz_home }}/omz_install.sh"
     mode: '0755'
   when: not zsh_omz_installed.stat.exists   # skip if already installed
   # changed_when: not zsh_omz_installed.stat.exists
 
 - name: Run oh-my-zsh installer
   ansible.builtin.command:
-    cmd: sh "{{ zsh_home }}/omz_install.sh" --unattended
+    cmd: sh "{{ omz_home }}/omz_install.sh" --unattended
   when: not zsh_omz_installed.stat.exists
   args:
-    creates: "{{ zsh_omz_dir }}"
+    creates: "{{ omz_dir }}"
   notify:
     - Remove oh-my-zsh custom folder
 
 - name: Remove oh-my-zsh custom folder
   ansible.builtin.file:
-    path: "{{ zsh_omz_dir }}/custom"
+    path: "{{ omz_dir }}/custom"
     state: absent
