@@ -25,5 +25,5 @@
   become: true
   become_user: "{{ mydotfiles_user }}"
   ansible.builtin.command:
-    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ mydotfiles_user_home }} home
+    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ ansible_user_dir }} home
   changed_when: false
