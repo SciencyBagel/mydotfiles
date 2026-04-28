@@ -24,3 +24,8 @@
     creates: "{{ zsh_omz_dir }}"
   notify:
     - Remove oh-my-zsh custom folder
+
+- name: Remove oh-my-zsh custom folder
+  ansible.builtin.file:
+    path: "{{ zsh_omz_dir }}/custom"
+    state: absent
