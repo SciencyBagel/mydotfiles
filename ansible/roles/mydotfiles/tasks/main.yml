@@ -36,14 +36,3 @@
   # for lines that indicate a symlink was created or modified
   register: mydotfiles_stow_result
   changed_when: "'LINK' in mydotfiles_stow_result.stderr or 'UNLINK' in mydotfiles_stow_result.stderr"
-
-# After --adopt, any foreign files that were pulled into the repo are now
-# tracked as modifications. git restore discards them, leaving only symlinks.
-- name: Restore rep to discard any adopted (foreign) files
-  become: true
-  become_user: "{{ mydotfiles_user }}"
-  ansible.builtin.command:
-    cmd: git restore .
-    chdir: "{{ mydotfiles_repo_dest }}"
-  # Only meaningful after an adopt. Could also run unconditionally as a safety net.
-  changed_when: false
