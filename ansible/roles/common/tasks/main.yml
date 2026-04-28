@@ -15,6 +15,19 @@
 #     upgrade: dist                # Full dist-upgrade
 #
 
+- name: Install common tools
+  become: true
+  ansible.builtin.package:
+    name:
+      - curl
+      - git
+      - zsh
+      - coreutils
+      - build-essential
+      - stow
+      - neovim # nice to have at system level
+    state: present
+
 # --- Set zsh as default shell ---
 - name: Set zsh as default shell for user
   ansible.builtin.user:
@@ -48,11 +61,9 @@
     name:
       - pyenv
       - cheat
-      - coreutils
       - fd
       - podman
       - pipx
-      - stow
     state: present
 
 # # --- Hostname ---

@@ -22,8 +22,8 @@
 
 # --- Stow dotfiles into $HOME ---
 - name: Stow dotfiles into home directory
-  ansible.builtin.command:
-    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ mydotfiles_user_home }} home
   become: true
   become_user: "{{ mydotfiles_user }}"
+  ansible.builtin.command:
+    cmd: stow --restow --dir {{ mydotfiles_repo_dest }} --target {{ mydotfiles_user_home }} home
   changed_when: false
