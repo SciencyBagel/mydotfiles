@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+/dist
+/build
+.pytest_cache
+.coverage
+/poetry.lock
+
+/.venv/
+/.env
+
+# macOS
+.DS_Store
+
+# VSCode / IDEs
+.vscode*/
+.idea/
+
+# vim
+*.swp
+
+# misc
+.cache/
+.dotnet/
+.gnupg/
+.ipynb_checkpoints/
+.ipython/
+.jupyter/
