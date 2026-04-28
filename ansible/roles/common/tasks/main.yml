@@ -14,17 +14,7 @@
 #   ansible.builtin.package:
 #     upgrade: dist                # Full dist-upgrade
 #
-# --- Common Packages ---
-- name: Install baseline packages
-  ansible.builtin.package:
-    name: "{{ common_packages }}"  # References a variable (defined in defaults)
-    state: present
 
-# --- Timezone ---
-# - name: Set timezone
-#   community.general.timezone:
-#     name: "{{ common_timezone }}"  # References a variable
-#
 # --- Set zsh as default shell ---
 - name: Set zsh as default shell for user
   ansible.builtin.user:
@@ -52,7 +42,7 @@
   when: not common_brew_installed
   changed_when: true
 
-- name: Install common homebrew tools and fonts
+- name: Install common homebrew tools
   become: false
   community.general.homebrew:
     name:
@@ -63,6 +53,7 @@
       - podman
       - pipx
     state: present
+
 # # --- Hostname ---
 # - name: Set hostname
 #   ansible.builtin.hostname:
