@@ -51,4 +51,5 @@
       - podman
       - pipx
       - bat
+      - yazi
     state: present
