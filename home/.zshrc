@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Use bat to render man pages with syntax highlighting
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT='-c'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
