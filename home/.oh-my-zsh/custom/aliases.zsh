@@ -19,3 +19,5 @@ alias t='tmux'
 
 alias cd-z='cd $ZSH/custom/'
 
+# find file and open it with default editor
+alias fzfo='fzf --print0 | xargs -0 -o $EDITOR'

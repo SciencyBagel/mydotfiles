@@ -1,44 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-homebrew_found=false
-if [[ -z "$HOMEBREW_PREFIX" ]]; then
-
-  if [[ "$OSTYPE" == darwin* ]]; then
-
-    if [[ -f "/opt/homebrew/bin/brew" ]]; then
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-      homebrew_found=true
-    fi
-
-  else # assume linux
-
-    if [[ -f "/opt/homebrew/bin/brew" ]]; then
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-      homebrew_found=true
-    fi
-
-  fi
-
-fi
-
-if $homebrew_found; then
-  export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-
-  export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/make/libexec/gnubin:$PATH"
-fi
-
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-
-# VI mode settings
-export KEYTIMEOUT=1 # 10ms
-export VI_MODE_SET_CURSOR=true
-
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -113,9 +75,57 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlightin
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
+homebrew_found=false
+if [[ -z "$HOMEBREW_PREFIX" ]]; then
+
+  if [[ "$OSTYPE" == darwin* ]]; then
+
+    if [[ -f "/opt/homebrew/bin/brew" ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      homebrew_found=true
+    fi
+
+  else # assume linux
+
+    if [[ -f "/opt/homebrew/bin/brew" ]]; then
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+      homebrew_found=true
+    fi
+
+  fi
+
+fi
+
+if $homebrew_found; then
+  export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+
+  export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/make/libexec/gnubin:$PATH"
+fi
+
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# VI mode settings
+export KEYTIMEOUT=1 # 10ms
+export VI_MODE_SET_CURSOR=true
+
 # Use bat to render man pages with syntax highlighting
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT='-c'
+
+# fzf customization
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+export FZF_DEFAULT_OPTS="
+--style full \
+--preview \
+\"fzf-preview.sh {}\" \
+--bind 'focus:transform-header:file \
+--brief {}' \
+ --popup 80%"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -149,3 +159,5 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
