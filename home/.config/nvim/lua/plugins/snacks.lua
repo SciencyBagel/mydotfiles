@@ -20,5 +20,9 @@ return {
  █████  ░░█████░░██████  █████░███ █████░░████████░░████████
 ░░░░░    ░░░░░  ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░░░  ░░░░░░░░
     ]]
+
+    opts.picker.sources = opts.picker.sources or {}
+    opts.picker.sources.explorer = opts.picker.sources.explorer or {}
+    opts.picker.sources.explorer.hidden = true
   end,
 }
