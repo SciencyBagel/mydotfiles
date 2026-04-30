@@ -118,8 +118,14 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT='-c'
 
 # fzf customization
-export FZF_DEFAULT_COMMAND='fd'
-export FZF_DEFAULT_OPTS='--style full --preview "fzf-preview.sh {}" --bind "focus:transform-header:file --brief {}"'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+export FZF_DEFAULT_OPTS="
+--style full \
+--preview \
+\"fzf-preview.sh {}\" \
+--bind 'focus:transform-header:file \
+--brief {}' \
+ --popup 80%"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
