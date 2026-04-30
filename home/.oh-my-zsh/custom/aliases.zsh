@@ -19,5 +19,8 @@ alias t='tmux'
 
 alias cd-z='cd $ZSH/custom/'
 
+# paginate command help like `command --help | bath`
+alias bath='bat -l help -p'
+
 # find file and open it with default editor
 alias fzfo='fzf --print0 | xargs -0 -o $EDITOR'
