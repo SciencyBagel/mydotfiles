@@ -157,4 +157,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -f ~/.fzf.zsh ]]; then
+  source ~/.fzf.zsh
+elif command -v fzf &>/dev/null && fzf --zsh &>/dev/null; then
+  eval "$(fzf --zsh)"
+else
+  echo "Warning: fzf not found"
+fi
