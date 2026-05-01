@@ -1,16 +1,9 @@
 # SPDX-License-Identifier: MIT-0
 ---
-- name: Install common tools
+- name: Install system packages
   become: true
   ansible.builtin.package:
-    name:
-      - curl
-      - git
-      - zsh
-      - coreutils
-      - build-essential
-      - stow
-      - neovim # nice to have at system level
+    name: "{{ common_system_packages }}"
     state: present
 
 # --- Set zsh as default shell ---
@@ -43,14 +36,5 @@
 - name: Install common homebrew tools
   become: false
   community.general.homebrew:
-    name:
-      - pyenv
-      - cheat
-      - fd
-      - tmux
-      - podman
-      - pipx
-      - bat
-      - yazi
-      - uv
+    name: "{{ common_homebrew_packages }}"
     state: present

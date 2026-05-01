@@ -1,0 +1,8 @@
+common_system_packages:
+  - curl
+  - git
+  - zsh
+  - coreutils
+  - build-essential
+  - stow
+  - neovim # nice to have at system level
