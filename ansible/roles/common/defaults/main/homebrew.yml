@@ -8,3 +8,4 @@ common_homebrew_packages:
   - bat
   - yazi
   - uv
+  - fzf
