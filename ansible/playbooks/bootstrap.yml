@@ -6,10 +6,10 @@
     - stations
   become: true
   tasks:
-    - name: Configure passwordless sudo for jahir user
+    - name: Configure passwordless sudo for {{ target_user }}
       ansible.builtin.lineinfile:
-        path: /etc/sudoers.d/jahir
-        line: "jahir ALL=(ALL) NOPASSWD: ALL"
+        path: "/etc/sudoers.d/{{ target_user }}"
+        line: "{{ target_user }} ALL=(ALL) NOPASSWD: ALL"
         create: true
         mode: '0440'
         validate: 'visudo -cf %s'    # validates syntax before saving — important!

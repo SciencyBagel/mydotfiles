@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT-0
+---
+# Override role variables here for Raspberry Pi hosts.
+# Example:
+#   common_homebrew_packages:
+#     - tmux
+#     - bat

@@ -1,2 +1,1 @@
-common_user: jahir
-common_timezone: "America/Chicago"
+common_user: "{{ target_user }}"
