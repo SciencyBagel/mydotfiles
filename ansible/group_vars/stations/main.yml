@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT-0
+---
+# Override role variables here for workstation hosts.
+# Example:
+#   lazyvim_homebrew_packages:
+#     - neovim
+#     - ripgrep
+#     - font-caskaydia-mono-nerd-font
