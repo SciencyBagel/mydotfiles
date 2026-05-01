@@ -3,14 +3,5 @@
 # --- Dependencies lazyvim needs ---
 - name: Install LazyVim dependencies
   community.general.homebrew:
-    name:
-      - neovim
-      - git
-      - curl
-      - go
-      - ripgrep       # lazyvim uses this for search
-      - fd       # lazyvim uses this for file finding
-      - unzip
-      - tree-sitter-cli
-      - font-caskaydia-mono-nerd-font
+    name: "{{ lazyvim_homebrew_packages }}"
     state: present

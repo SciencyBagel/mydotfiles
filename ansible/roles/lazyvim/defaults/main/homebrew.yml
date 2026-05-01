@@ -1,0 +1,10 @@
+lazyvim_homebrew_packages:
+  - neovim
+  - git
+  - curl
+  - go
+  - ripgrep # lazyvim uses this for search
+  - fd # lazyvim uses this for file finding
+  - unzip
+  - tree-sitter-cli
+  - font-caskaydia-mono-nerd-font

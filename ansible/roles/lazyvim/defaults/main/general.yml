@@ -1,5 +1,3 @@
----
-# defaults file for roles/neovim
 lazyvim_user: jahir
 lazyvim_home: "/home/{{ lazyvim_user }}"
 lazyvim_config_dir: "{{ lazyvim_home }}/.config/nvim"
