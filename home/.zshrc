@@ -32,6 +32,9 @@ fi
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# add gopath to path
+export PATH="$PATH:$(go env GOPATH)"
+
 # VI mode settings
 export KEYTIMEOUT=1 # 10ms
 export VI_MODE_SET_CURSOR=true
