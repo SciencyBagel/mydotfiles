@@ -3,6 +3,8 @@ common_system_packages:
   - git
   - zsh
   - coreutils
+  - nodejs
+  - npm
   - build-essential
   - stow
   - neovim # nice to have at system level
