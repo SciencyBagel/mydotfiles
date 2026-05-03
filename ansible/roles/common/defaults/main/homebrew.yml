@@ -2,10 +2,10 @@ common_homebrew_packages:
   - pyenv
   - cheat
   - fd
-  - tmux
   - podman
-  - pipx
   - bat
   - yazi
   - uv
   - fzf
+
+common_homebrew_packages_extra: []
