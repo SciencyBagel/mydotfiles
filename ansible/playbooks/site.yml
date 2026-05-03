@@ -20,7 +20,7 @@
     - lazyvim
     - mydotfiles
   tags:
-    - configs
+    - pi
 
 - name: Apply configs
   hosts:
