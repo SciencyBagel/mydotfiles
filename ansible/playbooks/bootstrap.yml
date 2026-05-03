@@ -3,7 +3,6 @@
 - name: Bootstrap passwordless sudo
   hosts:
     - raspberrypis
-    - stations
   become: true
   tasks:
     - name: Configure passwordless sudo for {{ target_user }}
@@ -13,8 +12,3 @@
         create: true
         mode: '0440'
         validate: 'visudo -cf %s'    # validates syntax before saving — important!
-
-    - name: Set timezone
-      community.general.timezone:
-        name: "{{ common_timezone }}"  # References a variable
-
