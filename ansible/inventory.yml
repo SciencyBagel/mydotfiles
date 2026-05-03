@@ -1,6 +1,7 @@
 raspberrypis:
   hosts:
     pi-5:
+    pi-4:
 
 stations:
   hosts:
