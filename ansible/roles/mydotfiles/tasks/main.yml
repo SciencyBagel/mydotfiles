@@ -14,11 +14,17 @@
     repo: "{{ mydotfiles_repo }}"
     dest: "{{ mydotfiles_repo_dest }}"
     version: main
-    update: true                  # pulls latest if already cloned
-    recursive: true               # init/update submodules (oh-my-zsh plugins)
+    update: true # pulls latest if already cloned
+    recursive: true # init/update submodules (oh-my-zsh plugins)
     force: true # because the repo is the single soiurce of truth
+    accept_hostkey: true
   become: true
   become_user: "{{ mydotfiles_user }}"
+
+- name: Move .zshrc file somewhere to avoid conflict
+  ansible.builtin.file:
+    path: "{{ mydotfiles_user_home }}/.zshrc"
+    state: absent
 
 # Adopt any conflicting files into the repo so stow can proceed,
 # then immediately restore the repo to discard them.
