@@ -6,3 +6,6 @@
 #     - neovim
 #     - ripgrep
 #     - font-caskaydia-mono-nerd-font
+
+common_homebrew_packages_extra:
+  - tmux
