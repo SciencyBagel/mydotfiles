@@ -1,12 +1,5 @@
 # SPDX-License-Identifier: MIT-0
 ---
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: true
-    cache_valid_time: 3600
-  become: true
-  when: ansible_pkg_mgr == 'apt'
-
 - name: Install system packages
   become: true
   ansible.builtin.package:
