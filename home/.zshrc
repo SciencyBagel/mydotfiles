@@ -174,7 +174,7 @@ if [[ "$HOST" == ms-7d32 ]]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
   # add llama.cpp bin to path
-  LLAMA_BIN_PATH = /opt/llama.cpp/build/bin
+  LLAMA_BIN_PATH=/opt/llama.cpp/build/bin
   if [[ -d "$LLAMA_BIN_PATH" ]]; then
     export PATH="$PATH:$LLAMA_BIN_PATH"
   else
