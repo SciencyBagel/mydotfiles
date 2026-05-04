@@ -165,7 +165,7 @@ else
   echo "Warning: fzf not found"
 fi
 
-if [[ "$OSTYPE" == ms-7d32 ]]; then
+if [[ "$HOST" == ms-7d32 ]]; then
   export PATH=/usr/local/cuda/bin:$PATH
   export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
