@@ -1,4 +1,5 @@
 alias less='less -R'
+alias bath='bat -p -l help'
 
 # If you're using GNU grep via Homebrew, this is fine.
 alias grep='grep --color=auto'
