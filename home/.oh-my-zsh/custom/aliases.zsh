@@ -17,7 +17,7 @@ alias py=python
 
 alias t='tmux'
 
-alias cd-z='cd $ZSH/custom/'
+alias cd-omz='cd $ZSH/custom/'
 
 # paginate command help like `command --help | bath`
 alias bath='bat -l help -p'
