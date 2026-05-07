@@ -4,7 +4,6 @@
 if [[ -z "$HOMEBREW_PREFIX" ]]; then
 
   if [[ "$OSTYPE" == darwin* ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
-
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
   elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
@@ -18,7 +17,6 @@ if [[ -z "$HOMEBREW_PREFIX" ]]; then
   fi
 
 fi
-
 if [[ -d $HOMEBREW_PREFIX ]]; then
   export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
@@ -28,7 +26,6 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
   export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
   export PATH="$HOMEBREW_PREFIX/make/libexec/gnubin:$PATH"
 fi
-
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -126,7 +123,6 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting vi-mode)
-
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
@@ -136,10 +132,8 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
+if ! command -v nvim &> /dev/null; then
   export EDITOR='vim'
-else
-  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -158,7 +152,6 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"

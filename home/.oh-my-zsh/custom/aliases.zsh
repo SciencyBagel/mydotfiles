@@ -1,4 +1,5 @@
 alias less='less -R'
+alias bath='bat -p -l help'
 
 # If you're using GNU grep via Homebrew, this is fine.
 alias grep='grep --color=auto'
@@ -17,7 +18,8 @@ alias py=python
 
 alias tm='tmux'
 
-alias cd-z='cd $ZSH/custom/'
+alias cd-omz='cd $ZSH/custom/'
+alias cd-nvim='cd $HOME/.config/nvim'
 
 # paginate command help like `command --help | bath`
 alias bath='bat -l help -p'
