@@ -15,7 +15,7 @@ alias reload='exec zsh'
 
 alias py=python
 
-alias t='tmux'
+alias tm='tmux'
 
 alias cd-z='cd $ZSH/custom/'
 
