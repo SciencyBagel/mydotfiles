@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-if [[ -z "$HOMEBREW_PREFIX" ]]; then
+if [[ -z "$HOMEBREW_PREFIX" ]] && [[ "$HOST" != nomad.u.l3 ]]; then
 
   if [[ "$OSTYPE" == darwin* ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
