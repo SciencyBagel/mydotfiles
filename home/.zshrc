@@ -132,7 +132,9 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if ! command -v nvim &> /dev/null; then
+if command -v nvim &> /dev/null; then
+  export EDITOR='nvim'
+elif command -v vim &> /dev/null; then
   export EDITOR='vim'
 fi
 
