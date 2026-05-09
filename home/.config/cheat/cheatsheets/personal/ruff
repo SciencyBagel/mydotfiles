@@ -1,0 +1,6 @@
+# format
+ruff format .
+
+# lint + auto-fix what's fixable
+ruff check --fix .
+
