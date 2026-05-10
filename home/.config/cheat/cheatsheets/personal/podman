@@ -1,0 +1,24 @@
+# build image with specified tag
+podman build -t <image-name> .
+
+# run container and remove it after runniung it (anonymous unnamed volumes also deleted)
+podman run --rm <image-name>
+
+# run container with interactive shell-session
+podman run -it <image-name>
+
+
+# List running container
+podman ps
+
+# List all containers created
+podman ps -a
+
+# Pull an image
+podman pull vaultwarden/server:latest
+
+# List images in local storage
+podman images
+
+# Delete a container
+podman rm <container-name>
