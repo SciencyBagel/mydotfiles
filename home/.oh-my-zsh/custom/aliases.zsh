@@ -16,7 +16,6 @@ alias reload='exec zsh'
 
 alias py=python
 alias tm='tmux'
-alias nv='nvim'
 
 alias cd-omz='cd $ZSH/custom/'
 alias cd-nvim='cd $HOME/.config/nvim'
@@ -26,3 +25,7 @@ alias bath='bat -l help -p'
 
 # find file and open it with default editor
 alias fzfo='fzf --print0 | xargs -0 -o $EDITOR'
+
+
+# work
+alias cd-odin='cd $HOME/Workshop/gitlab-workbench/odin/'
