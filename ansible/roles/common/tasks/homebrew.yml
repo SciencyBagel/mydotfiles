@@ -11,6 +11,16 @@
   ansible.builtin.set_fact:
     common_brew_installed: "{{ common_brew_check.results | map(attribute='stat.exists') | list is any }}"
 
+- name: Pre-create Homebrew prefix directory on Linux
+  become: true
+  ansible.builtin.file:
+    path: /home/linuxbrew/.linuxbrew
+    state: directory
+    owner: "{{ common_user }}"
+    group: "{{ common_user }}"
+    mode: "0755"
+  when: not common_brew_installed and ansible_system == 'Linux'
+
 - name: Install Homebrew
   become: true
   become_user: "{{ common_user }}"
