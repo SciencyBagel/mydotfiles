@@ -1,6 +1,8 @@
 common_homebrew_packages:
   - pyenv
   - cheat
+  - tldr
+  - pipx
   - fd
   - podman
   - bat
