@@ -5,7 +5,11 @@ common_system_packages:
   - coreutils
   - nodejs
   - npm
-  - build-essential
+  - make
+  - automake
+  - gcc
+  - gcc-c++
+  - kernel-devel
   - stow
   - neovim # nice to have at system level
 
