@@ -9,5 +9,6 @@ common_homebrew_packages:
   - yazi
   - uv
   - fzf
+  - commitizen
 
 common_homebrew_packages_extra: []
