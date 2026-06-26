@@ -10,6 +10,7 @@
     rest = restore
     lg = log --graph --decorate --abbrev-commit --oneline
     amend = commit --amend
+    desc = describe
 
     prev = "!git checkout HEAD^"
   next = "!git checkout $(git rev-list --reverse HEAD..main | head -1)"
