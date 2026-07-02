@@ -3,6 +3,12 @@
 Personal dotfiles + Ansible provisioning. macOS is the source of truth; Ansible
 deploys the same config to Linux hosts (Raspberry Pis, Linux stations).
 
+Manual command example:
+
+```sh
+ansible-playbook playbooks/site.yml -l <specific_host> --ask-vault-pass
+```
+
 ## Layout
 
 ```
@@ -87,15 +93,3 @@ git push
 1. Add the host under the right group in `ansible/inventory.yml`.
 2. Make sure the host is reachable over SSH and the user can `sudo`.
 3. `make provision-linux LIMIT=<hostname>`.
-
-## Why this layout
-
-- **Mac is the source of truth.** You edit one `.zshrc`. Mac and Linux both
-  read it; OS-specific bits (Homebrew, JAVA_HOME, gnubin) are gated with
-  `[[ "$OSTYPE" == darwin* ]]`.
-- **No Jinja templating for `.zshrc`.** Avoids drift between the file you
-  edit on Mac and what gets deployed elsewhere.
-- **Plugins are submodules.** Tracks upstream, easy updates, no vendored
-  binaries in the repo. `git clone --recurse-submodules` (or
-  `make update-plugins`) is the only thing you need to remember.
-- **Ansible only runs on Linux.** Mac is bootstrapped by `bootstrap-mac.sh`.
