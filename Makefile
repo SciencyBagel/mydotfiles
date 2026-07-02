@@ -2,14 +2,14 @@
 #
 # Run `make` (or `make help`) for the list of targets.
 
-.PHONY: help bootstrap-mac update-plugins provision-linux provision-check syntax-check
+.PHONY: help bootstrap-mac update-plugins provision provision-check syntax-check
 
 help:
 	@printf "Available targets:\n"
 	@printf "  bootstrap-mac      First-time (or re-run) Mac setup: submodules + omz + symlinks\n"
 	@printf "  update-plugins     Pull latest versions of oh-my-zsh plugin submodules\n"
-	@printf "  provision-linux    Run the Ansible playbook against all hosts in inventory\n"
-	@printf "                     (override target group: make provision-linux LIMIT=raspberrypis)\n"
+	@printf "  provision    Run the Ansible playbook against all hosts in inventory\n"
+	@printf "                     (override target group: make provision LIMIT=raspberrypis)\n"
 	@printf "  provision-check    Dry-run the Ansible playbook (--check, no changes made)\n"
 	@printf "  syntax-check       Validate Ansible playbook syntax\n"
 
@@ -25,8 +25,8 @@ LIMIT ?=
 ANSIBLE_PLAYBOOK = cd ansible && ansible-playbook playbooks/site.yml
 LIMIT_FLAG = $(if $(LIMIT),--limit $(LIMIT),)
 
-provision-linux:
-	$(ANSIBLE_PLAYBOOK) $(LIMIT_FLAG)
+provision:
+	$(ANSIBLE_PLAYBOOK) --ask-vault-pass $(LIMIT_FLAG)
 
 provision-check:
 	$(ANSIBLE_PLAYBOOK) --check --diff $(LIMIT_FLAG)

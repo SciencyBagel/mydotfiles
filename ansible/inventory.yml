@@ -6,3 +6,13 @@ raspberrypis:
 stations:
   hosts:
     ms-7d32:
+    alma-linux:
+
+virtual-machines:
+  hosts:
+    alma-linux:
+      ansible_host: 192.168.50.250
+
+epel:
+  alma-linux:
+  ms-7d32:
