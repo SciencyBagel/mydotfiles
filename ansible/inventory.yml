@@ -3,7 +3,7 @@ raspberrypis:
     pi-5:
     pi-4:
 
-stations:
+desktops:
   hosts:
     ms-7d32:
     alma-linux:

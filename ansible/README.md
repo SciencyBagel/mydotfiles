@@ -40,7 +40,7 @@ the mydotfiles role then replaces it with a symlink into the repo.
 `inventory.yml` defines two groups:
 
 - `raspberrypis` — the Pis on the home network.
-- `stations` — Linux desktop/workstation hosts.
+- `desktops` — Linux desktop/workstation hosts.
 
 Edit this file to add or remove hosts.
 
