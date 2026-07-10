@@ -3,22 +3,23 @@
 	name = Jahir F. Montes
 
 [alias]
-    st = status
-    co = checkout
-    cm = commit
-    br = branch
-    rest = restore
-    lg = log --graph --decorate --abbrev-commit --oneline
-    amend = commit --amend
-    desc = describe
+  st = status
+  co = checkout
+  cm = commit
+  br = branch
+  rest = restore
+  lg = log --graph --decorate --abbrev-commit --oneline
+  amend = commit --amend
+  desc = describe
+  sw = switch
 
-    prev = "!git checkout HEAD^"
+  prev = "!git checkout HEAD^"
   next = "!git checkout $(git rev-list --reverse HEAD..main | head -1)"
 
     # Interactive rebase from where the current branch diverged from main or master.
     # Uses merge-base to find the common ancestor, so it works regardless of
     # how many commits ahead your branch is.
-    ri = "!git rebase -i $(git merge-base HEAD $(git rev-parse --abbrev-ref HEAD | grep -q '^main$' && echo main || echo master))"
+  ri = "!git rebase -i $(git merge-base HEAD $(git rev-parse --abbrev-ref HEAD | grep -q '^main$' && echo main || echo master))"
 
 [core]
     excludesfile = ~/.gitignore_global
