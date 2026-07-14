@@ -25,3 +25,7 @@ alias bath='bat -l help -p'
 
 # find file and open it with default editor
 alias fzfo='fzf --print0 | xargs -0 -o $EDITOR'
+
+alias print-timestamp='date +"%Y-%m-%d_%H:%M:%S"'
+
+alias tldr='tldr --short-options'
