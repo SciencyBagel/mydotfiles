@@ -30,3 +30,6 @@ alias print-timestamp='date +"%Y-%m-%d_%H:%M:%S"'
 
 # work
 alias cd-odin='cd $HOME/Workshop/gitlab-workbench/odin/'
+
+
+alias tldr='tldr --short-options'
