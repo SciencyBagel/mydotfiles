@@ -4,3 +4,11 @@
 vim.g.autoformat = false
 vim.opt.ttimeoutlen = 10
 vim.opt.colorcolumn = "120"
+
+vim.diagnostic.config({
+  update_in_insert = true, -- Update diagnostics while typing
+  virtual_text = {
+    prefix = "●",
+  },
+  severity_sort = true,
+})
