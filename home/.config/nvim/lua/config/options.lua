@@ -4,3 +4,8 @@
 vim.g.autoformat = false
 vim.opt.ttimeoutlen = 10
 vim.opt.colorcolumn = "120"
+vim.filetype.add({
+  extension = {
+    tcss = "css",
+  },
+})
