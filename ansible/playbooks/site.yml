@@ -1,7 +1,7 @@
 - name: Apply baseline system-level changes
   hosts:
     - raspberrypis
-    - stations
+    - desktops
   become: true
   roles:
     - common
@@ -25,7 +25,7 @@
 - name: Apply configs
   hosts:
     - raspberrypis
-    - stations
+    - desktops
   roles:
     - omz
     - lazyvim
