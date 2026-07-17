@@ -21,7 +21,57 @@
   ri = "!git rebase -i $(git merge-base HEAD $(git rev-parse --abbrev-ref HEAD | grep -q '^main$' && echo main || echo master))"
 
 [core]
+  pager = delta
   excludesfile = ~/.gitignore_global
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  dark = true
+  syntax-theme = Dracula
+  line-numbers = true
+ 
+  # file-style: the filename header above each diff
+  # Accepts named colors, ANSI 0-255 codes, or hex values
+  file-style = "#61afef"
+
+  # hunk-header-decoration-style: the box/line drawn around the @@ hunk header
+  # "ul" means underline decoration; you can also use "box" or "omit"
+  hunk-header-decoration-style = "#61afef" ul
+
+  # line-numbers-left-style / right-style: the gutter line numbers
+  line-numbers-left-style = "#61afef"
+  line-numbers-right-style = "#61afef"
+
+  # line-numbers-minus-style / plus-style: line numbers on changed lines
+  line-numbers-minus-style = red
+  line-numbers-plus-style = green
+
+  # file-decoration-style: the horizontal rule drawn under the filename header
+  # Default is blue + "ul" (underline). This is the most common leftover blue line.
+  file-decoration-style = "#61afef" ul
+
+  # hunk-header-decoration-style: the line/box drawn around the @@ hunk header
+  # Default is a blue box
+  hunk-header-decoration-style = "#61afef" ul
+
+  # hunk-header-style: what components to show and the base style.
+  # "line-number syntax" means: show the line number, and syntax-highlight
+  # the code snippet. You can also use "file line-number syntax" or "raw".
+  hunk-header-style = line-number syntax
+
+  # hunk-header-line-number-style: colors the "40:" part specifically.
+  # Default: blue. This is your culprit.
+  hunk-header-line-number-style = "#5c6370"
+
+  # hunk-header-file-style: colors the filename IF you include "file"
+  # in hunk-header-style above. Default: blue. Harmless to set anyway.
+  hunk-header-file-style = "#5c6370"
+
+[merge]
+  conflictStyle = zdiff3
 
 [pull]
   rebase = true
