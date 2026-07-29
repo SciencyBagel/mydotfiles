@@ -1,31 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-if [[ -z "$HOMEBREW_PREFIX" ]] && [[ "$HOST" != nomad.u.l3 ]]; then
-
-  if [[ "$OSTYPE" == darwin* ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
-
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-
-  else
-
-    echo "Warning: Homebrew not found"
-
-  fi
-
-fi
-if [[ -d $HOMEBREW_PREFIX ]]; then
-  export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-
-  export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
-  export PATH="$HOMEBREW_PREFIX/make/libexec/gnubin:$PATH"
-fi
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -155,6 +129,8 @@ fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$PATH"
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -168,19 +144,6 @@ else
   echo "Warning: fzf not found"
 fi
 
-if [[ "$HOST" == ms-7d32 ]]; then
-  export PATH=/usr/local/cuda/bin:$PATH
-  export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+source "$HOME/.poopyscoopy"
 
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-  # add llama.cpp bin to path
-  LLAMA_BIN_PATH=/opt/llama.cpp/build/bin
-  if [[ -d "$LLAMA_BIN_PATH" ]]; then
-    export PATH="$PATH:$LLAMA_BIN_PATH"
-  else
-    echo "Warning: $LLAMA_BIN_PATH was not found."
-  fi
-fi
+alias pi='airlock -- pi'
