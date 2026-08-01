@@ -13,3 +13,6 @@
 [submodule "home/.config/cheat/cheatsheets/community"]
 	path = home/.config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets.git
+[submodule "home/.config/nvim"]
+	path = home/.config/nvim
+	url = /Users/jahir/jahir-nvim-config
