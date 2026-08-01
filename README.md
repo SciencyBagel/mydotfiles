@@ -27,6 +27,41 @@ scripts/               # local (non-Ansible) helpers
 Makefile               # `make help` lists everything
 ```
 
+## Known caveat: nvim submodule is on a local path (temporary)
+
+`home/.config/nvim` is a submodule pointing at `jahir-nvim-config`, but that
+repo hasn't been pushed to a remote yet — `.gitmodules` currently has it as a
+local path (`/Users/jahir/jahir-nvim-config`). Until that's fixed, submodule
+init needs an explicit opt-in, and only works on this Mac:
+
+```sh
+git -c protocol.file.allow=always submodule update --init --recursive
+```
+
+Without `protocol.file.allow=always`, git refuses `file://`-style submodule
+URLs by default (security hardening) and the clone/init fails. This also
+means Ansible provisioning to Linux hosts will fail on the nvim submodule
+specifically, since that local path doesn't exist on those machines.
+
+**Fix once `jahir-nvim-config` has a real remote:**
+
+```sh
+cd ~/jahir-nvim-config
+git remote add origin <chosen-url>
+git push -u origin main
+
+cd ~/mydotfiles
+git config -f .gitmodules submodule.home/.config/nvim.url <chosen-url>
+git submodule sync
+git add .gitmodules
+git commit -m "chore: point nvim config submodule at <host>"
+git push
+```
+
+After that, this section (and the `protocol.file.allow=always` workaround)
+can be deleted — plain `git clone --recurse-submodules` will work everywhere
+again.
+
 ## First-time setup
 
 ### macOS
