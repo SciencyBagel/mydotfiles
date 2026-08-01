@@ -15,7 +15,7 @@ ansible-playbook playbooks/site.yml -l <specific_host> --ask-vault-pass
 home/                  # source-of-truth dotfiles, used on every host
   .zshrc               # one file, cross-platform (uses $OSTYPE conditionals)
   .oh-my-zsh/custom/   # aliases, themes, plugins (each plugin is a git submodule)
-  .config/nvim/        # LazyVim config
+  .config/nvim/        # LazyVim config (submodule: jahir-nvim-config)
 ansible/               # provisioning for Linux hosts
   inventory.yml        # hosts (raspberrypis, stations)
   playbooks/           # site.yml entry point
@@ -76,6 +76,20 @@ git submodule add <upstream-url> home/.oh-my-zsh/custom/plugins/<name>
 # add <name> to the plugins=(...) line in home/.zshrc
 git add .gitmodules home/.oh-my-zsh/custom/plugins home/.zshrc
 git commit -m "feat(zsh): add <name> plugin"
+```
+
+## Editing the nvim config
+
+`home/.config/nvim` is its own repo (`jahir-nvim-config`), vendored here as a
+submodule — same mechanism as the oh-my-zsh plugins, but this one you own and
+edit directly rather than pull from upstream:
+
+```sh
+cd home/.config/nvim
+# edit, commit, push inside the standalone repo
+cd ../../..
+git add home/.config/nvim
+git commit -m "chore(nvim): bump config submodule"
 ```
 
 ## Updating plugins
