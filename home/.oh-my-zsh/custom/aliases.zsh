@@ -14,6 +14,7 @@ alias ll='ls -l'
 
 alias reload='exec zsh'
 
+alias g=git
 alias py=python
 alias tm='tmux'
 
