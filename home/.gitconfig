@@ -22,9 +22,21 @@
   ri = "!git rebase -i $(git merge-base HEAD $(git rev-parse --abbrev-ref HEAD | grep -q '^main$' && echo main || echo master))"
 
 [core]
-    excludesfile = ~/.gitignore_global
+  pager = delta
+  excludesfile = ~/.gitignore_global
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  dark = true
+
+[merge]
+  conflictStyle = zdiff3
 
 [pull]
-    rebase = true
+  rebase = true
+
 [init]
 	defaultBranch = main
