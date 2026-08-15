@@ -9,26 +9,30 @@
   register: mydotfiles_cloned
 
   # WARN: should be read only
-- name: Clone mydotfiles repo (with submodules for oh-my-zsh plugins)
+- name: Clone mydotfiles repo (with submodules for oh-my-zsh plugins and nvim config)
   ansible.builtin.git:
     repo: "{{ mydotfiles_repo }}"
     dest: "{{ mydotfiles_repo_dest }}"
     version: main
     update: true # pulls latest if already cloned
-    recursive: true # init/update submodules (oh-my-zsh plugins)
-    force: true # because the repo is the single soiurce of truth
+    recursive: true # init/update submodules (oh-my-zsh plugins, jahir-nvim-config)
+    force: true # because the repo is the single source of truth
     accept_hostkey: true
   become: true
   become_user: "{{ mydotfiles_user }}"
 
-- name: Move .zshrc file somewhere to avoid conflict
+# .zshrc here is always either the oh-my-zsh installer's default template
+# (never customized) or a symlink from a previous run — safe to delete
+# outright so stow can symlink the repo's version in its place.
+- name: Remove .zshrc so stow can symlink the repo's version
   ansible.builtin.file:
     path: "{{ mydotfiles_user_home }}/.zshrc"
     state: absent
 
-# Adopt any conflicting files into the repo so stow can proceed,
-# then immediately restore the repo to discard them.
-# This is the standard pattern for resolving pre-existing file conflicts with stow.
+# Adopt any other conflicting files into the repo so stow can proceed.
+# The next run's `force: true` git pull resets the clone back to origin,
+# discarding whatever got adopted — this is the standard pattern for
+# resolving pre-existing file conflicts with stow.
 - name: Stow dotfiles, adopting any conflicting files
   become: true
   become_user: "{{ mydotfiles_user }}"

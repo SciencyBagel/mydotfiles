@@ -1,38 +1,26 @@
-Role Name
-=========
+mydotfiles
+==========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Clones this repo (recursively, so submodules — oh-my-zsh plugins and the
+`jahir-nvim-config` nvim submodule — come with it) to `~/mydotfiles` on the
+target, then uses GNU stow to symlink everything under `home/` into
+`$HOME`. Always force-pulls `main`, so the target's clone is reset back to
+origin on every run — it's a deployment target, not something to edit
+in place.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- `mydotfiles_user` / `mydotfiles_user_home` — resolved via
+  `ansible_user_dir`.
+- `mydotfiles_repo` / `mydotfiles_repo_dest` — clone source and
+  destination (`roles/mydotfiles/defaults/main.yml`).
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Runs last in `playbooks/site.yml`, after `omz` and `lazyvim` — it symlinks
+over `~/.oh-my-zsh/custom` and `~/.config/nvim`, so both need to exist (or
+not conflict) first. Requires the target user's SSH access (via agent
+forwarding, per `ansible.cfg`'s `ForwardAgent=yes`) to cover both
+`mydotfiles` and `jahir-nvim-config` — both are SSH-only clones.

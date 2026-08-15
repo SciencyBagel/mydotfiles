@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT-0
 ---
-# tasks file for roles/zsh
+# tasks file for roles/omz
 
 # --- Install oh-my-zsh ---
 - name: Check if oh-my-zsh is already installed

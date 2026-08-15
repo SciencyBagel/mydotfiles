@@ -10,10 +10,10 @@ is just a quick reference for the Ansible bits.
 From the repo root:
 
 ```sh
-make provision-check                 # dry-run all hosts
-make provision-linux                 # apply to all hosts
-make provision-linux LIMIT=mypi-5    # target one host
-make syntax-check                    # lint the playbook
+make provision-check           # dry-run all hosts
+make provision                 # apply to all hosts
+make provision LIMIT=mypi-5    # target one host
+make syntax-check               # lint the playbook
 ```
 
 Or directly:
@@ -26,14 +26,14 @@ ansible-playbook -i ansible/inventory.yml ansible/playbooks/site.yml
 
 | Role         | What it does |
 | ------------ | ------------ |
-| `common`     | Baseline packages and system setup. |
-| `zsh`        | Installs zsh and oh-my-zsh; sets zsh as the user's default shell. |
-| `neovim`     | Installs Neovim. The actual config is symlinked by the `mydotfiles` role. |
-| `mydotfiles` | Clones this repo (with submodules) to `~/mydotfiles` on the target, then symlinks `.zshrc`, `.oh-my-zsh/custom`, `.config/nvim` into `$HOME`. |
+| `common`     | Baseline system packages, Homebrew, and sets zsh as the user's default shell. |
+| `omz`        | Installs oh-my-zsh (unattended, skipped if already present). |
+| `lazyvim`    | Installs Neovim + LazyVim's tool dependencies (ripgrep, fd, tree-sitter-cli, etc.). The actual config is symlinked by the `mydotfiles` role. |
+| `mydotfiles` | Clones this repo (with submodules, incl. the `jahir-nvim-config` submodule) to `~/mydotfiles` on the target, then symlinks `.zshrc`, `.oh-my-zsh/custom`, `.config/nvim` into `$HOME`. |
 
-Order in `playbooks/site.yml` matters: `common → zsh → neovim → mydotfiles`.
-The zsh role creates `~/.oh-my-zsh/custom/` (via the upstream installer);
-the mydotfiles role then replaces it with a symlink into the repo.
+Order in `playbooks/site.yml` matters: `common → omz → lazyvim → mydotfiles`.
+The `omz` role creates `~/.oh-my-zsh/custom/` (via the upstream installer);
+the `mydotfiles` role then replaces it with a symlink into the repo.
 
 ## Inventory
 

@@ -13,5 +13,3 @@ common_system_packages:
   - kernel-devel
   - stow
   - neovim # nice to have at system level
-
-common_system_packages_extras: []

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT-0
 ---
 
-# defaults file for roles/zsh
+# defaults file for roles/omz
 
 # The user to install oh-my-zsh for.
 omz_user: "{{ target_user }}"

@@ -1,38 +1,23 @@
-Role Name
-=========
+lazyvim
+=======
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Installs Neovim and the tool dependencies LazyVim needs (ripgrep, fd,
+tree-sitter-cli, a Nerd Font, etc.) via Homebrew. Does not install the
+LazyVim config itself — that's a separate repo (`jahir-nvim-config`),
+vendored as a git submodule under `home/.config/nvim` and symlinked into
+place by the `mydotfiles` role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- `lazyvim_homebrew_packages` — package list
+  (`roles/lazyvim/defaults/main/homebrew.yml`).
+- `lazyvim_user` / `lazyvim_home` / `lazyvim_config_dir` — resolved via
+  `ansible_user_dir`; currently unused by this role's tasks but available
+  for future config-side tasks.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+None directly, but the config it supports is fetched by the `mydotfiles`
+role, which should run after this one.

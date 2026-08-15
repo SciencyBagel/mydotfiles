@@ -68,10 +68,10 @@ From your Mac, after editing `ansible/inventory.yml` to include the host:
 
 ```sh
 make provision-check     # dry-run, see what would change
-make provision-linux     # apply
+make provision           # apply
 ```
 
-To target a single host or group: `make provision-linux LIMIT=mypi-5`.
+To target a single host or group: `make provision LIMIT=mypi-5`.
 
 The Ansible flow installs zsh + oh-my-zsh, clones this repo on the target
 (with submodules), then symlinks the same dotfiles into `$HOME` there.
@@ -81,7 +81,7 @@ The Ansible flow installs zsh + oh-my-zsh, clones this repo on the target
 1. Edit something in `home/` on Mac (e.g. add an alias to `home/.zshrc`).
 2. Open a new shell — the change is live (you're symlinked to it).
 3. Commit + push.
-4. On each Linux host, re-run `make provision-linux` (or have it ssh in
+4. On each Linux host, re-run `make provision` (or have it ssh in
    automatically — your call).
 
 ## Adding a new oh-my-zsh plugin
@@ -121,4 +121,4 @@ git push
 
 1. Add the host under the right group in `ansible/inventory.yml`.
 2. Make sure the host is reachable over SSH and the user can `sudo`.
-3. `make provision-linux LIMIT=<hostname>`.
+3. `make provision LIMIT=<hostname>`.
