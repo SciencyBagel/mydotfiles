@@ -20,4 +20,4 @@ common_system_packages_by_family:
     - kernel-devel
   Debian:
     - g++
-    - raspberrypi-kernel-headers
+    - "linux-headers-{{ ansible_facts['kernel'] }}"

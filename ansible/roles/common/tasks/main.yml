@@ -1,5 +1,16 @@
 # SPDX-License-Identifier: MIT-0
 ---
+# Debian's rolling mirror prunes superseded package files on its own schedule,
+# independent of cache_valid_time, so a locally-cached index can point at a
+# .deb that's already gone (404) even if the cache itself isn't "old". Must
+# run before any package install below, so it can't be a play-level pre_task.
+- name: Update apt cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: Install Fedora/RHEL-only packages
   become: true
   ansible.builtin.package:
