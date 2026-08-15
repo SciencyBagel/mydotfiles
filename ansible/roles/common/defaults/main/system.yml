@@ -9,7 +9,15 @@ common_system_packages:
   - automake
   - cmake
   - gcc
-  - gcc-c++
-  - kernel-devel
   - stow
   - neovim # nice to have at system level
+
+# Compiler/kernel-header package names differ across package managers, so
+# these get merged onto common_system_packages by os_family (see tasks/main.yml).
+common_system_packages_by_family:
+  RedHat:
+    - gcc-c++
+    - kernel-devel
+  Debian:
+    - g++
+    - raspberrypi-kernel-headers
