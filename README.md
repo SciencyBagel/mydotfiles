@@ -47,6 +47,21 @@ and tells you. Re-run with `--force` to overwrite:
 ./scripts/bootstrap-mac.sh --force
 ```
 
+`home/.gitconfig` intentionally has no `[user]` block — emails don't belong in
+a public repo's history. Create `~/.gitconfig-local` once per machine (never
+tracked) with your identity:
+
+```ini
+[user]
+	name = Your Name
+	email = you@example.com
+```
+
+On a machine that also does work under `~/Workshop/gitlab-workbench/`, add
+`~/.gitconfig-work` the same way — `home/.gitconfig`'s `includeIf` picks it up
+automatically for any repo cloned under that path, overriding the default
+identity from `~/.gitconfig-local`.
+
 ### Linux (Pi or station)
 
 From your Mac, after editing `ansible/inventory.yml` to include the host:

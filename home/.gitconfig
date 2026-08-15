@@ -1,6 +1,8 @@
-[user]
-	email = jfm.post@icloud.com
-	name = Jahir
+[include]
+	path = ~/.gitconfig-local
+
+[includeIf "gitdir:~/Workshop/gitlab-workbench/"]
+	path = ~/.gitconfig-work
 
 [alias]
   st = status
