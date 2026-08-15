@@ -9,6 +9,7 @@ common_homebrew_packages:
   - yazi
   - uv
   - fzf
+  - git-delta
   - commitizen
 
 common_homebrew_packages_extra: []
