@@ -6,7 +6,11 @@ alias grep='grep --color=auto'
 alias egrep='grep -E'
 
 # Check if ls supports GNU-specific flags before setting the alias
-alias ls='lsd --color=always -h --group-directories-first'
+if command -v lsd > /dev/null 2>&1; then
+  alias lsd='lsd'
+fi
+
+alias ls='ls --color=always -h --group-directories-first'
 alias ll='ls -l'
 
 alias reload='exec zsh'
