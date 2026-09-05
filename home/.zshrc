@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-if [[ -z "$HOMEBREW_PREFIX" ]] && [[ "$HOST" != nomad.u.l3 ]]; then
+# Homebrew: macOS prefix first, then Linuxbrew. Silent when neither is present —
+# some hosts have no Homebrew at all, so a startup warning there is just noise.
+# $HOMEBREW_PREFIX being empty is the signal if you need to check.
+if [[ -z "$HOMEBREW_PREFIX" ]]; then
 
   if [[ "$OSTYPE" == darwin* ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -9,10 +12,6 @@ if [[ -z "$HOMEBREW_PREFIX" ]] && [[ "$HOST" != nomad.u.l3 ]]; then
   elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
 
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-
-  else
-
-    echo "Warning: Homebrew not found"
 
   fi
 
@@ -166,19 +165,11 @@ else
   echo "Warning: fzf not found"
 fi
 
-if [[ "$HOST" == ms-7d32 ]]; then
-  export PATH=/usr/local/cuda/bin:$PATH
-  export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-  # add llama.cpp bin to path
-  LLAMA_BIN_PATH=/opt/llama.cpp/build/bin
-  if [[ -d "$LLAMA_BIN_PATH" ]]; then
-    export PATH="$PATH:$LLAMA_BIN_PATH"
-  else
-    echo "Warning: $LLAMA_BIN_PATH was not found."
-  fi
-fi
+# Per-host config lives in one file per machine: custom/hosts/<hostname>.zsh
+# Sourced last, so a host file can rely on everything above (oh-my-zsh, pyenv,
+# fzf) already being set up. oh-my-zsh only auto-loads custom/*.zsh at the top
+# level, so files under hosts/ are loaded only here, by name — adding a machine
+# means adding a file, not adding a branch to this shared config.
+_host_config="${ZSH_CUSTOM:-$ZSH/custom}/hosts/${HOST%%.*}.zsh"
+[[ -r "$_host_config" ]] && source "$_host_config"
+unset _host_config

@@ -122,3 +122,20 @@ git push
 1. Add the host under the right group in `ansible/inventory.yml`.
 2. Make sure the host is reachable over SSH and the user can `sudo`.
 3. `make provision LIMIT=<hostname>`.
+
+## Per-host shell config
+
+Anything that applies to only one machine goes in its own file, rather than a
+hostname branch inside the shared `.zshrc`:
+
+```
+home/.oh-my-zsh/custom/hosts/<hostname>.zsh
+```
+
+`.zshrc` sources `hosts/${HOST%%.*}.zsh` as its last step, if it exists — so
+adding a machine means adding a file, and hosts without one are unaffected.
+Because it loads last, a host file can rely on oh-my-zsh, pyenv, and fzf
+already being set up. (oh-my-zsh auto-loads `custom/*.zsh` at the top level
+only, so files under `hosts/` never load on the wrong machine.)
+
+Example: `hosts/ms-7d32.zsh` sets up CUDA, nvm, and llama.cpp for that box.
