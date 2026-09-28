@@ -1,8 +1,5 @@
 [include]
-	path = ~/.gitconfig-local
-
-[includeIf "gitdir:~/Workshop/gitlab-workbench/"]
-	path = ~/.gitconfig-work
+  path = ~/.gitconfig_local
 
 [alias]
   st = status
