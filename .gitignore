@@ -1,3 +1,4 @@
 
 # domain specific things exist here, privacy expected
-**/.oh-my-zsh/custom/vars.zsh
+**/.oh-my-zsh/custom/local-aliases.zsh
+**/.oh-my-zsh/custom/local-vars.zsh
