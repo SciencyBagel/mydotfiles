@@ -173,3 +173,5 @@ fi
 _host_config="${ZSH_CUSTOM:-$ZSH/custom}/hosts/${HOST%%.*}.zsh"
 [[ -r "$_host_config" ]] && source "$_host_config"
 unset _host_config
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
