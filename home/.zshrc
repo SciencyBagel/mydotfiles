@@ -32,7 +32,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # add npm path
-export PATH="$PATH:$HOME/.local/share/npm-packages/bin"
+export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
 
 # VI mode settings
 export KEYTIMEOUT=1 # 10ms
