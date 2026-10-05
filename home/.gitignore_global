@@ -32,3 +32,6 @@ __pycache__/
 
 .claude/
 jahir-notes.md
+
+/.classpath
+/.factorypath
