@@ -10,9 +10,6 @@
 [submodule "home/.oh-my-zsh/custom/plugins/zsh-autocomplete"]
 	path = home/.oh-my-zsh/custom/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete
-[submodule "home/.config/cheat/cheatsheets/community"]
-	path = home/.config/cheat/cheatsheets/community
-	url = https://github.com/cheat/cheatsheets.git
 [submodule "home/.config/nvim"]
 	path = home/.config/nvim
 	url = git@github.com:SciencyBagel/jahir-nvim-config.git

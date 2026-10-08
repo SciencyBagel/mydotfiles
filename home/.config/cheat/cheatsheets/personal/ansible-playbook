@@ -1,5 +1,0 @@
----
-tags: [ ansible ]
----
-# filter by hosts
-ansible-playbook playbooks/site.yml -l <host-or-group>
