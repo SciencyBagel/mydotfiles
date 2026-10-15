@@ -7,5 +7,6 @@
 - Summarize changes briefly.
 - When creating or materially updating substantial Markdown files, include and maintain a table of contents near the top.
 - when writing code and functions, add comments/docstrings to exlain the function e.g.,
+- When updating repo documentation, do not put information that easily becomes outdated. It should be information that is more stable.
 
 When giving command options, explain what each of the options do.
