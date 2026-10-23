@@ -14,6 +14,4 @@ export NVM_DIR="$HOME/.nvm"
 LLAMA_BIN_PATH=/opt/llama.cpp/build/bin
 if [[ -d "$LLAMA_BIN_PATH" ]]; then
   export PATH="$PATH:$LLAMA_BIN_PATH"
-else
-  echo "Warning: $LLAMA_BIN_PATH was not found."
 fi
