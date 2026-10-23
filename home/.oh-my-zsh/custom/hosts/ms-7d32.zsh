@@ -15,3 +15,13 @@ LLAMA_BIN_PATH=/opt/llama.cpp/build/bin
 if [[ -d "$LLAMA_BIN_PATH" ]]; then
   export PATH="$PATH:$LLAMA_BIN_PATH"
 fi
+
+# kubectl autocompletion
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+fi
+
+# uv autocompletion
+if command -v uv &> /dev/null; then
+  source <(uv generate-shell-completion zsh)
+fi
