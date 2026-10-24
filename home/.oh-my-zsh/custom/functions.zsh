@@ -30,5 +30,5 @@ function cd-mydotfiles {
     return 1
   fi
 
-  cd "$mydotfiles"
+  cd "$MYDOTFILES_PATH"
 }
