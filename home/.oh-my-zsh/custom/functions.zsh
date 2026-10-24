@@ -23,3 +23,12 @@ function frg {
 
   "${EDITOR:-vim}" +"$line" "$file"       # +N tells vim/nvim to jump to line N
 }
+
+function cd-mydotfiles {
+  if [[ ! -d $mydotfiles ]]; then
+    echo "Error: missing \"$mydotfiles\"" >&2
+    return 1
+  fi
+
+  cd "$mydotfiles"
+}
