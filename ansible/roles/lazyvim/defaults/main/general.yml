@@ -1,3 +1,0 @@
-lazyvim_user: "{{ target_user }}"
-lazyvim_home: "{{ ansible_user_dir }}"
-lazyvim_config_dir: "{{ lazyvim_home }}/.config/nvim"

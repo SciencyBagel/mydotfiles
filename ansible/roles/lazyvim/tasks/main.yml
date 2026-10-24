@@ -1,7 +1,0 @@
----
-
-# --- Dependencies lazyvim needs ---
-- name: Install LazyVim dependencies
-  community.general.homebrew:
-    name: "{{ lazyvim_homebrew_packages }}"
-    state: present

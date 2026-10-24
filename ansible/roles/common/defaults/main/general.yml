@@ -1,1 +1,0 @@
-common_user: "{{ target_user }}"
