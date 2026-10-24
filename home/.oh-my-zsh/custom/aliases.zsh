@@ -18,7 +18,7 @@ alias reload='exec zsh'
 alias py=python
 alias tm='tmux'
 
-alias cd-omz='cd $ZSH/custom/'
+alias cd-zsh='cd $ZSH/custom/'
 alias cd-nvim='cd $HOME/.config/nvim'
 
 # paginate command help like `command --help | bath`
