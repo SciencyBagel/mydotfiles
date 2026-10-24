@@ -1,1 +1,1 @@
-mydotfiles="$HOME/mydotfiles"
+export MYDOTFILES_PATH="$HOME/mydotfiles"

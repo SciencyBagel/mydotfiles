@@ -26,7 +26,7 @@ function frg {
 
 function cd-mydotfiles {
   if [[ ! -d $mydotfiles ]]; then
-    echo "Error: missing \"$mydotfiles\"" >&2
+    echo "Error: missing \"$MYDOTFILES_PATH"" >&2
     return 1
   fi
 
