@@ -27,6 +27,7 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # add gopath to path
 export PATH="$PATH:$(go env GOPATH)/bin"
