@@ -8,30 +8,13 @@ _host_early="$ZSH_CUSTOM/hosts/early/${HOST%%.*}.zsh"
 [[ -r "$_host_early" ]] && source "$_host_early"
 unset _host_early
 
-# Paths shared by all hosts.
+# Paths available to plugins and custom files while they load.
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
 
 # Oh My Zsh initializes completion, so add personal completion directories first.
 fpath+=("$HOME/.zfunc")
-
-# Plugin and tool settings read during Oh My Zsh startup.
-export KEYTIMEOUT=1 # 10ms for vi-mode
-export VI_MODE_SET_CURSOR=true
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT='-c'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden'
-export FZF_DEFAULT_OPTS="
---style full \
---preview \
-\"fzf-preview.sh {}\" \
---bind 'focus:transform-header:file \
---brief {}' \
- --popup 80%"
-
 
 # =========================================================================
 # Oh My Zsh loads plugins, then top-level custom/*.zsh files and the theme.
@@ -41,6 +24,14 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlightin
 source "$ZSH/oh-my-zsh.sh"
 # =========================================================================
 
+
+# Runtime settings do not need to be available while Oh My Zsh loads.
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
+export KEYTIMEOUT=1 # 10ms for vi-mode
+export VI_MODE_SET_CURSOR=true
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT='-c'
 
 # Personal interactive setup that can use Oh My Zsh completion and plugins.
 if command -v nvim &>/dev/null; then
@@ -52,6 +43,16 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
+
+# Set fzf defaults before loading its shell integration.
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+export FZF_DEFAULT_OPTS="
+--style full \
+--preview \
+\"fzf-preview.sh {}\" \
+--bind 'focus:transform-header:file \
+--brief {}' \
+ --popup 80%"
 
 if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
