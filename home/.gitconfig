@@ -7,7 +7,7 @@
   cm = commit
   br = branch
   rest = restore
-  lg = log --graph --decorate --abbrev-commit --oneline
+  lg = log --graph --decorate=auto --abbrev-commit
   amend = commit --amend
   sw = switch
 
