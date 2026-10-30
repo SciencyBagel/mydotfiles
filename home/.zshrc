@@ -1,3 +1,4 @@
+# =========================================================================
 # Shared environment needed while Oh My Zsh loads plugins and custom files.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/mydotfiles/home/.oh-my-zsh/custom"
@@ -15,6 +16,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Oh My Zsh initializes completion, so add personal completion directories first.
 fpath+=("$HOME/.zfunc")
+# =========================================================================
+
+
 
 # =========================================================================
 # Oh My Zsh loads plugins, then top-level custom/*.zsh files and the theme.
@@ -28,6 +32,8 @@ source "$ZSH/oh-my-zsh.sh"
 # Runtime settings do not need to be available while Oh My Zsh loads.
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
+
+# =========================================================================
 export KEYTIMEOUT=1 # 10ms for vi-mode
 export VI_MODE_SET_CURSOR=true
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -66,3 +72,4 @@ fi
 _host_config="${ZSH_CUSTOM:-$ZSH/custom}/hosts/${HOST%%.*}.zsh"
 [[ -r "$_host_config" ]] && source "$_host_config"
 unset _host_config
+# =========================================================================
