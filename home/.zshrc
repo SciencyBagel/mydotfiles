@@ -14,6 +14,9 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
+
 # Oh My Zsh initializes completion, so add personal completion directories first.
 fpath+=("$HOME/.zfunc")
 # =========================================================================
@@ -29,9 +32,6 @@ source "$ZSH/oh-my-zsh.sh"
 # =========================================================================
 
 
-# Runtime settings do not need to be available while Oh My Zsh loads.
-export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH="$PATH:$HOME/.local/share/npm-packages/bin:$HOME/.npm-global/bin"
 
 # =========================================================================
 export KEYTIMEOUT=1 # 10ms for vi-mode
