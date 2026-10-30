@@ -24,11 +24,17 @@ function frg {
   "${EDITOR:-vim}" +"$line" "$file"       # +N tells vim/nvim to jump to line N
 }
 
-function cd-mydotfiles {
-  if [[ ! -d $MYDOTFILES_PATH ]]; then
-    echo "Error: missing \"$MYDOTFILES_PATH"\" >&2
-    return 1
-  fi
+if [[ ! -v MYDOTFILES_PATH ]]; then
+  echo 'Warning: undefined var $MYDOTFILES_PATH' >&2
+elif [[ ! -d $MYDOTFILES_PATH ]]; then
+  echo "Error: missing \"$MYDOTFILES_PATH"\" >&2
+else
+  function cd-mydotfiles {
+    cd "$MYDOTFILES_PATH"
+  }
 
-  cd "$MYDOTFILES_PATH"
-}
+  function mydotfiles-update() (
+    cd "$MYDOTFILES_PATH"
+    git pull
+  )
+fi
