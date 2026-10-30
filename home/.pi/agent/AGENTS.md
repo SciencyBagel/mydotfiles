@@ -6,6 +6,7 @@
 - After making code changes, include one concise Conventional Commits-style sample commit message. Do not include Co-authored-by trailers or other co-author attribution.
 - Summarize changes briefly.
 - When creating or materially updating substantial Markdown files, include and maintain a table of contents near the top.
+- Create and maintain `AI-README.md` for README-style documentation you author, in the directory where a `README.md` would go. Leave `README.md` for me to create and maintain, except for obvious corrections or information too useful to omit.
 - when writing code and functions, add comments/docstrings to exlain the function e.g.,
 - When updating repo documentation, do not put information that easily becomes outdated. It should be information that is more stable.
 
