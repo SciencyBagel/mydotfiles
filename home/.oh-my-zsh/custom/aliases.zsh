@@ -27,6 +27,11 @@ alias bath='bat -l help -p'
 # find file and open it with default editor
 alias fzfo='fzf --print0 | xargs -0 -o $EDITOR'
 
-alias tldr='tldr --short-options'
 alias n='nvim'
 alias g='git'
+
+if command -v tldr &> /dev/null; then
+  if tldr --help 2>&1 | grep -q -- '--short-options'; then
+    alias tldr='tldr --short-options'
+  fi
+fi
