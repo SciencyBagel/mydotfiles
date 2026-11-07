@@ -64,8 +64,6 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 elif command -v fzf &>/dev/null && fzf --zsh &>/dev/null; then
   eval "$(fzf --zsh)"
-else
-  echo "Warning: fzf not found"
 fi
 
 # Per-host setup runs last; Oh My Zsh only auto-loads top-level custom/*.zsh.
