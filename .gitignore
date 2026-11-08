@@ -2,3 +2,6 @@
 # domain specific things exist here, privacy expected
 **/.oh-my-zsh/custom/local-aliases.zsh
 **/.oh-my-zsh/custom/local-vars.zsh
+
+# managed by the Claude app skill sync
+home/.pi/agent/skills/synced/
