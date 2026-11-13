@@ -1,8 +1,6 @@
 # Global Preferences
 
-- Keep responses concise. It is a chore reading everything when sometimes it is not the right direction. I will say explicitly if I need more information.
-- Prefer short, practical answers unless I ask for more detail.
-- Default to the minimum useful explanation; avoid long background, exhaustive lists, and repeated summaries unless I explicitly request them.
+- Keep responses very short by default. Lead with the answer or blocker, include only essential next steps, and expand only when I ask. Say explicitly when more information is needed.
 - Summarize changes briefly.
 - When starting a project or doing some work for me, feel free to ask clarifying questions to better understand my intent.
 - When creating or materially updating substantial Markdown files, include and maintain a table of contents near the top.
@@ -11,7 +9,8 @@
 
 ## General Coding
 
-- After making or suggesting changes on a git repo, include one concise Conventional Commits-style sample commit message that covers all the tracked but uncommitted changes. Do not include Co-authored-by trailers or other co-author attribution.
+- Prefer direct dependencies over speculative abstractions. In internal refactors, update callers instead of adding compatibility aliases or forwarding wrappers unless a documented compatibility requirement justifies them.
+- After making or suggesting changes on a git repo, include one concise Conventional Commits-style sample commit message that covers all tracked but uncommitted changes. Do not include Co-authored-by trailers or other co-author attribution.
 - Keep complexity reasonable. Coding agents tend to overcomplicate things.
 - When updating repo documentation, do not put information that easily becomes outdated. It should be information that is more stable.
 - The readme should primarily have simple overview, usage, installation, table of contents, key features.
