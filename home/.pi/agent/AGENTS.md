@@ -12,6 +12,7 @@
 - Prefer direct dependencies over speculative abstractions. In internal refactors, update callers instead of adding compatibility aliases or forwarding wrappers unless a documented compatibility requirement justifies them.
 - After making or suggesting changes on a git repo, include one concise Conventional Commits-style sample commit message that covers all tracked but uncommitted changes. Do not include Co-authored-by trailers or other co-author attribution.
 - Keep complexity reasonable. Coding agents tend to overcomplicate things.
+- Test core mechanisms, primary API behavior, and important invariants, especially safety, concurrency, and consequential failure paths. Do not add low-value tests for incidental log wording, trivial guards or forwarding, unimplemented stubs, or behavior already covered by a higher-level test. A small test is worthwhile only when it protects a meaningful contract.
 - When updating repo documentation, do not put information that easily becomes outdated. It should be information that is more stable.
 - The readme should primarily have simple overview, usage, installation, table of contents, key features.
 
