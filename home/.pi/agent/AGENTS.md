@@ -10,7 +10,8 @@
 ## General Coding
 
 - Prefer direct dependencies over speculative abstractions. In internal refactors, update callers instead of adding compatibility aliases or forwarding wrappers unless a documented compatibility requirement justifies them.
-- After making or suggesting changes on a git repo, include one concise Conventional Commits-style sample commit message that covers all tracked but uncommitted changes. Do not include Co-authored-by trailers or other co-author attribution.
+- After making or suggesting changes in a Git repository, include one concise Conventional Commits-style sample commit message covering tracked but uncommitted changes. If the work was committed, report the actual commit instead. Do not include Co-authored-by trailers or other co-author attribution.
+- When updating a Git-tracked `AGENTS.md`, automatically commit that file with a concise Conventional Commit message. Leave unrelated changes uncommitted and never add co-author attribution. If the file is not Git-tracked, report that rather than creating a repository.
 - Keep complexity reasonable. Coding agents tend to overcomplicate things.
 - Test core mechanisms, primary API behavior, and important invariants, especially safety, concurrency, and consequential failure paths. Do not add low-value tests for incidental log wording, trivial guards or forwarding, unimplemented stubs, or behavior already covered by a higher-level test. A small test is worthwhile only when it protects a meaningful contract.
 - When updating repo documentation, do not put information that easily becomes outdated. It should be information that is more stable.
@@ -19,6 +20,7 @@
 ## Coding Style
 
 - Name things explicitly. `serversPingedSinceLastCheck` over `pinged`, `candidate` over `a`. A name should say what the value means, not what happened to it.
+- Name functions and methods for the meaningful work they perform, not just the result they return. Prefer `validateAndConvert` when both operations occur over a vague result-only name like `runtimeConfig`; keep conventional names for simple accessors and constructors.
 - Declare a variable where its value is decided, not earlier. Prefer
 
       Address newPrimary;
