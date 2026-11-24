@@ -9,6 +9,7 @@
 
 ## General Coding
 
+- Make decisions as a senior engineer would make them. If my instructions or decisions are questionable, you should push back.
 - Prefer direct dependencies over speculative abstractions. In internal refactors, update callers instead of adding compatibility aliases or forwarding wrappers unless a documented compatibility requirement justifies them.
 - After making or suggesting changes in a Git repository, include one concise Conventional Commits-style sample commit message covering tracked but uncommitted changes. If the work was committed, report the actual commit instead. Do not include Co-authored-by trailers or other co-author attribution.
 - When updating a Git-tracked `AGENTS.md`, automatically commit that file with a concise Conventional Commit message. Leave unrelated changes uncommitted and never add co-author attribution. If the file is not Git-tracked, report that rather than creating a repository.
